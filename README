@@ -10,3 +10,6 @@
 4. Demo the model
 
     python run.py
+
+IMPORTANT for non-linux users:
+Visit https://pytorch.prg/get-started/locally/ and follow the prompts to install PyTorch
