@@ -58,13 +58,13 @@ if __name__ == '__main__':
 
         # infer through network
         humans = estimator.inference(image)
-        image = ResEstimator.draw_humans(
-            image,
-            humans,
-            imgcopy=False
-        )
+        # image = ResEstimator.draw_humans(
+        #     image,
+        #     humans,
+        #     imgcopy=False
+        # )
 
-        draw_rects = False
+        draw_rects = True
 
         # Head
         # 8 -> 9
@@ -123,7 +123,7 @@ if __name__ == '__main__':
                 image,
                 pt1=(x,y),
                 pt2=(x+w,y+h),
-                color=(0,255,255),
+                color=(0,0,255),
                 thickness=2
             )
         check = image[y:y+h, x:x+w].size
@@ -244,7 +244,7 @@ if __name__ == '__main__':
                 image,
                 pt1=(x,y),
                 pt2=(x+w, y+h),
-                color=(0,255,255),
+                color=(0,0,255),
                 thickness=2
             )
         check = image[y:y+h, x:x+w].size
