@@ -12,3 +12,4 @@ others
 .idea
 pretrained
 *.pth
+venv/
