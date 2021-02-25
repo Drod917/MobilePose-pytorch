@@ -21,7 +21,8 @@ from network_modules import DUC, MobileNetV2
 from network import CoordRegressionNetwork
 from estimator import ResEstimator
 
-def crop_camera(image, ratio=0.15):
+# Default ratio=0.15
+def crop_camera(image, ratio=0.25):
     height = image.shape[0]
     width = image.shape[1]
     mid_width = width / 2.0
@@ -64,15 +65,15 @@ if __name__ == '__main__':
 
         # infer through network
         humans = estimator.inference(image)
-        image = ResEstimator.draw_humans(
-            image,
-            humans,
-            imgcopy=False
-        )
+        # image = ResEstimator.draw_humans(
+        #     image,
+        #     humans,
+        #     imgcopy=False
+        # )
 
         # Convert image color for matplotlib visualization
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        draw_rects = True
+        draw_rects = False
 
         # Head
         # 8 -> 9
@@ -234,10 +235,10 @@ if __name__ == '__main__':
                 image,
                 pt1=(x,y),
                 pt2=(x+w, y+h),
-                color=(0,255,255),
+                color=(0,0,255),
                 thickness=2
             )
-        check = image[h:y+h, w:x+w].size
+        check = image[y:y+h, x:x+w].size
         if check > 0:
             # cv2.imshow('14->15', image[y:y+h, x:x+w])
             fig.add_subplot(rows, columns, 6)
