@@ -223,21 +223,21 @@ if __name__ == '__main__':
 
         # 14 -> 15
         # L_elb -> L_wrist
-        pt1=(humans[14][0]-50,humans[14][1]-50)
-        pt2=(humans[15][0]+75,humans[15][1]+75)
+        pt2=(humans[14][0]+25,humans[14][1]-25)
+        pt1=(humans[15][0]-50,humans[15][1]+50)
         x = pt1[0]
-        y = pt1[1]
+        y = pt2[1]
         w = pt2[0] - pt1[0]
-        h = pt2[1] - pt1[1]
+        h = pt1[1] - pt2[1]
         if draw_rects:
             cv2.rectangle(
                 image,
                 pt1=(x,y),
                 pt2=(x+w, y+h),
-                color=(0,0,255),
+                color=(0,255,255),
                 thickness=2
             )
-        check = image[y:y+h, x:x+w].size
+        check = image[h:y+h, w:x+w].size
         if check > 0:
             # cv2.imshow('14->15', image[y:y+h, x:x+w])
             fig.add_subplot(rows, columns, 6)
