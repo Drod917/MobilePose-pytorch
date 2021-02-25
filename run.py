@@ -64,11 +64,11 @@ if __name__ == '__main__':
 
         # infer through network
         humans = estimator.inference(image)
-        # image = ResEstimator.draw_humans(
-        #     image,
-        #     humans,
-        #     imgcopy=False
-        # )
+        image = ResEstimator.draw_humans(
+            image,
+            humans,
+            imgcopy=False
+        )
 
         # Convert image color for matplotlib visualization
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -102,8 +102,8 @@ if __name__ == '__main__':
         # 12 -> 11
         # R_should -> R_elb
         # Switch points to mirror body parts
-        pt1=(humans[12][0]-75,humans[12][1]-75)
-        pt2=(humans[11][0]+75,humans[11][1]+75)
+        pt2=(humans[12][0]+25,humans[12][1]-25)
+        pt1=(humans[11][0]-25,humans[11][1]+25)
         x = pt1[0]
         y = pt1[1]
         w = pt2[0] - pt1[0]
@@ -116,17 +116,17 @@ if __name__ == '__main__':
                 color=(0,0,255),
                 thickness=2
             )
-        check = image[y:y+h, x:x+w].size
+        check = image[y+h:y, x:x+w].size
         if check > 0:
             # cv2.imshow('12->11', image[y:y+h, x:x+w])
             fig.add_subplot(rows, columns, 3)
             plt.imshow(
-                cv2.resize(image[y:y+h, x:x+w], (tile_res,tile_res))
+                cv2.resize(image[y+h:y, x:x+w], (tile_res,tile_res))
             )
         
         # 11 -> 10
         # R_elb -> R_wrist
-        pt2=(humans[10][0]+50,humans[10][1]+50)
+        pt2=(humans[10][0]+25,humans[10][1]+25)
         pt1=(humans[11][0]-50,humans[11][1]-50)
         x = pt1[0]
         y = pt1[1]
