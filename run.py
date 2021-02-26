@@ -56,7 +56,7 @@ if __name__ == '__main__':
     fig.tight_layout()
     columns = 2
     rows = 5
-    tile_res = 300
+    tile_res = 224
     while True:
         
         # get frame
@@ -127,8 +127,8 @@ if __name__ == '__main__':
         
         # 11 -> 10
         # R_elb -> R_wrist
-        pt2=(humans[10][0]+25,humans[10][1]+25)
-        pt1=(humans[11][0]-50,humans[11][1]-50)
+        pt2=(humans[10][0]+30,humans[10][1]+30)
+        pt1=(humans[11][0]-30,humans[11][1]-30)
         x = pt1[0]
         y = pt1[1]
         w = pt2[0] - pt1[0]
@@ -224,8 +224,8 @@ if __name__ == '__main__':
 
         # 14 -> 15
         # L_elb -> L_wrist
-        pt2=(humans[14][0]+25,humans[14][1]-25)
-        pt1=(humans[15][0]-50,humans[15][1]+50)
+        pt2=(humans[14][0]+30,humans[14][1]-30)
+        pt1=(humans[15][0]-30,humans[15][1]+30)
         x = pt1[0]
         y = pt2[1]
         w = pt2[0] - pt1[0]
